@@ -92,6 +92,7 @@ var _ = {};
         passed.push(collection[i]);
       }
     }
+    return passed;
   };
 
   // Return all elements of an array that don't pass a truth test.
