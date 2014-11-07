@@ -106,12 +106,25 @@ var _ = {};
       }
     }
     return passed;
-
-
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function (array) {
+    var i, j, uniqArr = [], found;
+
+    for (i = 0; i < array.length; i++) {
+      found = false;
+      for (j = 0; j < uniqArr.length; j++) {
+        if (array[i] === uniqArr[j]) {
+          found = true;
+        }
+      }
+      if (!found) {
+        uniqArr.push(array[i]);
+      }
+    }
+
+    return uniqArr;
   };
 
 
