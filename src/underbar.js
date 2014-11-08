@@ -229,15 +229,13 @@ var _ = {};
       if (iterator === undefined) {
         if (results && item) {
           return true;
-        } else {
-          return false;
         }
+        return false;
       }
       if (results && iterator(item)) {
         return true;
-      } else {
-        return false;
       }
+      return false;
     }, true);
   };
 
