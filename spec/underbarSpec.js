@@ -188,25 +188,25 @@ describe('pluck', function() {
   });
 });
 
-describe('invoke, when provided a function reference', function() {
-  it('runs the input function on each item in the array, and returns a list of results', function() {
-    var reverse = function(){
-      return this.split('').reverse().join('');
-    };
+// describe('invoke, when provided a function reference', function() {
+//   it('runs the input function on each item in the array, and returns a list of results', function() {
+//     var reverse = function(){
+//       return this.split('').reverse().join('');
+//     };
 
-    var reversedStrings = _.invoke(['dog', 'cat'], reverse);
+//     var reversedStrings = _.invoke(['dog', 'cat'], reverse);
 
-    expect(reversedStrings).to.eql(['god', 'tac']);
-  });
-});
+//     expect(reversedStrings).to.eql(['god', 'tac']);
+//   });
+// });
 
-describe('invoke, when provided a method name', function() {
-  it('runs the specified method on each item in the array, and returns a list of results', function() {
-    var upperCasedStrings = _.invoke(['dog', 'cat'], 'toUpperCase');
+// describe('invoke, when provided a method name', function() {
+//   it('runs the specified method on each item in the array, and returns a list of results', function() {
+//     var upperCasedStrings = _.invoke(['dog', 'cat'], 'toUpperCase');
 
-    expect(upperCasedStrings).to.eql(['DOG', 'CAT']);
-  });
-});
+//     expect(upperCasedStrings).to.eql(['DOG', 'CAT']);
+//   });
+// });
 
 describe('reduce', function() {
   it('should be able to sum up an array', function() {
