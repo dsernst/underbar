@@ -337,6 +337,16 @@ var _ = {};
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function (func) {
+    var table = {};
+    return function (arg) {
+      var value;
+      if (_.contains(table, arg)) {
+        return table.arg;
+      }
+      value = func(arg);
+      table[arg] = value;
+      return value;
+    };
   };
 
   // Delays a function for the given number of milliseconds, and then calls
