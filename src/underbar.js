@@ -187,6 +187,26 @@ var _ = {};
   //     return total + number;
   //   }, 0); // should be 6
   _.reduce = function (collection, iterator, accumulator) {
+    var total, i;
+    if (accumulator === undefined) {
+      total = collection[0];
+    } else {
+      total = accumulator;
+    }
+    if (typeof collection === "object") {
+      if (Array.isArray(collection)) {
+        for (i = 0; i < collection.length; i++) {
+          total = iterator(total, collection[i]);
+        }
+      } else {
+        for (i in collection) {
+          if (collection.hasOwnProperty(i)) {
+            total = iterator(total, collection[i]);
+          }
+        }
+      }
+    }
+    return total;
   };
 
   // Determine if the array or object contains a given value (using `===`).
