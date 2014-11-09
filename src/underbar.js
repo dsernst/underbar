@@ -356,6 +356,17 @@ var _ = {};
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function (func, wait) {
+    var waitFunc = function (t) {
+      var start = Date.now();
+      while ((Date.now() - start) < t) {}
+    };
+
+//  waitFunc(wait);  //not working, causes infinite loop
+
+    var args = Array.prototype.slice.call(arguments, 2);
+
+    func.apply(this, args);
+
   };
 
 
