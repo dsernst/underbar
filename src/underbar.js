@@ -253,7 +253,6 @@ var _ = {};
     return !_.every(collection, reverseTest);
   };
 
-
   /**
    * OBJECTS
    * =======
@@ -297,7 +296,6 @@ var _ = {};
     }
     return obj;
   };
-
 
   /**
    * FUNCTIONS
@@ -362,7 +360,6 @@ var _ = {};
     }, wait);
   };
 
-
   /**
    * ADVANCED COLLECTION OPERATIONS
    * ==============================
@@ -374,6 +371,22 @@ var _ = {};
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function (array) {
+    var newArray = array.slice(),
+      length = newArray.length,
+      i,
+      randIndex,
+      remaining,
+      temp;
+
+    for (i = 0; i < length; i++) {
+      remaining = length - i;
+      randIndex = parseInt(Math.random(0, 1) * remaining, 10) + i;
+      temp = newArray[i];
+      newArray[i] = newArray[randIndex];
+      newArray[randIndex] = temp;
+    }
+
+    return newArray;
   };
 
 
