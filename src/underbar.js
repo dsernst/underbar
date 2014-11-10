@@ -344,13 +344,10 @@ var _ = {};
   _.memoize = function (func) {
     var table = {};
     return function (arg) {
-      var value;
-      if (_.contains(table, arg)) {
-        return table.arg;
+      if (!table.hasOwnProperty(arg)) {
+        table[arg] = func(arg);
       }
-      value = func(arg);
-      table[arg] = value;
-      return value;
+      return table[arg];
     };
   };
 
