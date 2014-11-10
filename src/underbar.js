@@ -176,9 +176,7 @@ var _ = {};
       if (typeof functionOrKey === "function") {
         return functionOrKey.apply(item, passArgs);
       }
-      if (typeof item === "string") {
-        return item[functionOrKey].apply(item, passArgs);
-      }
+      return item[functionOrKey].apply(item, passArgs);
     });
   };
 
