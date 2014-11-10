@@ -170,8 +170,17 @@ var _ = {};
 
   // Calls the method named by functionOrKey on each value in the list.
   // Note: you will nead to learn a bit about .apply to complete this.
-  // _.invoke = function (collection, functionOrKey, args) {
-  // };
+  _.invoke = function (collection, functionOrKey, args) {
+    var passArgs = args || [];
+    return _.map(collection, function (item) {
+      if (typeof functionOrKey === "function") {
+        return functionOrKey.apply(item, passArgs);
+      }
+      if (typeof item === "string") {
+        return item[functionOrKey].apply(item, passArgs);
+      }
+    });
+  };
 
   // Reduces an array or object to a single value by repetitively calling
   // iterator(previousValue, item) for each item. previousValue should be
