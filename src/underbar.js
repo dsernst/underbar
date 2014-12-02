@@ -504,6 +504,23 @@ var _ = {};
   // Take the difference between one array and a number of other arrays.
   // Only the elements present in just the first array will remain.
   _.difference = function (array) {
+    var args = Array.prototype.slice.call(arguments);
+    var i;
+    var isUnique;
+    var j;
+    var uniqArr = [];
+    for (i = 0; i < array.length; i += 1) {
+      isUnique = true;
+      for (j = 1; j < args.length; j += 1) {
+        if (_.contains(args[j], array[i])) {
+          isUnique = false;
+        }
+      }
+      if (isUnique) {
+        uniqArr.push(array[i]);
+      }
+    }
+    return uniqArr;
   };
 
 
