@@ -534,6 +534,23 @@ var _ = {};
   //
   // See the Underbar readme for details.
   _.throttle = function (func, wait) {
+    var lastCalledAt;
+    var lastResult;
+    var now;
+
+    var throttled = function () {
+      var args = Array.prototype.slice.call(arguments);
+      now = new Date();
+      if (now - lastCalledAt < wait) {
+        _.delay(throttled, now - lastCalledAt);
+        return lastResult;
+      }
+      lastResult = func.apply(this, args);
+      lastCalledAt = now;
+      return lastResult;
+    };
+
+    return throttled;
   };
 
 }).call(this);
